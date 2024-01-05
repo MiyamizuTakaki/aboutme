@@ -14,13 +14,14 @@
         padding: 0;
         overflow: visible;
     }
-    .container-style{
+
+    .container-style {
         position: relative;
         height: 100vh;
     }
 
     .background-container {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -38,8 +39,8 @@
         background-repeat: no-repeat;
         background-position: center;
         filter: blur(10px);
-    }
 
+    }
     .centered-text-info {
         position: relative;
         display: flex;
@@ -76,40 +77,99 @@
     </div>
 </div>
 <div class="container container-style">
-    <img class="avatar" src="avatar.jpg" alt="Avatar">
+    <div class="centered-text-info">
+        <img class="avatar" src="avatar.jpg" alt="Avatar">
+        <h1>欢迎访问我的个人名片——赵前程</h1>
+        <h2>Welcome to my personal card site - Zhao Qiancheng</h2>
+        <div class="columns">
+            <div class="column">
+                <a href="https://www.mitsuha.top" class="button is-primary" style="height: 100%">我的博客<br>My Blog</a>
+            </div>
+            <div class="column">
+                <a href="ZhaoConnect.vcf" class="button is-primary" style="height: 100%">获取我的通讯录<br>Get
+                    Contact</a>
+            </div>
+            <div class="column js-modal-trigger" data-target="modal-js-example">
+                <button class="button is-info" style="height: 100%">获取我的微信号<br>WeChat</button>
+            </div>
+            <div class="column">
+                <a href="https://t.me/MiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Telegram<br>Telegram</a>
+            </div>
+            <div class="column">
+                <a href="https://t.me/ITMiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Telegram频道<br>Telegram
+                    Channel</a>
+            </div>
+            <div class="column">
+                <a href="https://www.instagram.com/MiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Instagram<br>Instagram</a>
+            </div>
 
-<div class="centered-text-info">
-    <h1>欢迎访问我的个人名片</h1>
-    <h2>Welcome to my personal card site</h2>
-    <div class="columns">
-        <div class="column">
-            <a href="https://www.mitsuha.top" class="button is-primary" style="height: 100%">我的博客<br>My Blog</a>
-        </div>
-        <div class="column">
-            <a href="ZhaoConnect.vcf" class="button is-primary" style="height: 100%">获取我的通讯录<br>Get Contact</a>
-        </div>
-        <div class="column">
-            <button class="button is-info" style="height: 100%">获取我的微信号<br>WeChat</button>
-        </div>
-        <div class="column">
-            <a href="https://t.me/MiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Telegram<br>Telegram</a>
-        </div>
-        <div class="column">
-            <a href="https://t.me/ITMiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Telegram频道<br>Telegram
-                Channel</a>
-        </div>
-        <div class="column">
-            <a href="https://www.instagram.com/MiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Instagram<br>Instagram</a>
         </div>
 
+        <p style="height: 20px;"></p>
     </div>
+    <div class="modal" id="modal-js-example">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <p class="image is-4by3">
+                <img src="wechat.jpg" alt="">
+            </p>
+            <div style="color: white">
+                提示：长按二维码保存，微信选择图库扫描即可<br>
+                Tip: Long press the QR code to save, then select the gallery on WeChat to scan.
+            </div>
 
-    <p style="height: 20px;"></p>
-</div>
-
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
 </div>
 </body>
 <script>
+    window.addEventListener('scroll', function () {
+        var background = document.querySelector('.background-container');
+        var scrollPosition = window.pageYOffset;
+        background.style.backgroundPositionY = -scrollPosition + 'px';
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
 
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        // Add a click event on various child elements to close the parent modal
+        (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+            const $target = $close.closest('.modal');
+
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Escape') {
+                closeAllModals();
+            }
+        });
+    });
 </script>
 </html>
