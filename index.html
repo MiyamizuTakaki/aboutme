@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bulma.min.css">
+    <title>Zhao Qiancheng 赵前程</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow:hidden;
+    }
+
+    .background-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('2023-07-14 14.31.19.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        filter: blur(10px);
+    }
+
+    .centered-text {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-size: 24px;
+        color: white;
+    }
+
+    .avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        transition: transform 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+
+    }
+
+    .avatar:hover {
+        transform: rotate(360deg);
+    }
+</style>
+<body>
+<div class="background-container">
+    <div class="background-image">
+
+    </div>
+</div>
+<div class="container">
+    <div class="centered-text">
+        <div class="avatar">
+            <img src="avatar.jpg" alt="Avatar">
+        </div>
+        <h1>欢迎访问我的个人名片</h1>
+        <h2>Welcome to my personal card site</h2>
+        <div class="columns">
+            <div class="column">
+                <a href="ZhaoConnect.vcf" class="button is-primary" style="height: 100%">获取我的通讯录<br>Get Contact</a>
+            </div>
+            <div class="column">
+                <button class="button is-info" style="height: 100%">获取我的微信号<br>WeChat</button>
+            </div>
+            <div class="column">
+                <a href="https://t.me/MiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Telegram<br>Telegram</a>
+            </div>
+            <div class="column">
+                <a href="https://t.me/ITMiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Telegram频道<br>Telegram
+                    Channel</a>
+            </div>
+            <div class="column">
+                <a href="https://www.instagram.com/MiyamizuTakaki" class="button is-info" style="height: 100%">获取我的Instagram<br>Instagram</a>
+            </div>
+        </div>
+
+        <p style="height: 20px;"></p>
+        <a href="https://www.mitsuha.top" class="button is-primary" style="height: 100%">打开我的博客网站<br>My Blog</a>
+    </div>
+</div>
+</body>
+<script>
+</script>
+</html>
